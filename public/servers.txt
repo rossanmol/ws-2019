@@ -1,0 +1,78 @@
+[hotserver]
+#推荐服务器区域，按顺序显示在推荐列表里
+53112	EU
+53112	US
+53201	OC
+
+[serverlist]
+#正常服务器列表区域-开头配置分组名，下边为该组包含的服务器列表
+#stateIcon 状态标志 0-不显示 1-流畅 2-火爆 3-维护
+#stateIcon2	状态标志 0-不显示 1-新服
+#serverid worldid name ip port stateIcon stateIcon2 tgwAddress tgwPort
+-EU[1~10]
+1	53001	EU-001 Etherblade	35.204.238.242	5222	2	0	35.204.238.242	5222
+2	53002	EU-002 Dragon	34.90.185.5	5222	2	0	34.90.185.5	5222
+3	53003	EU-003 Ocean	35.204.255.12	5222	2	0	35.204.255.1	5222
+4	53004	EU-004 Inspire	34.95.115.1	5222	2	0	34.95.115.1	5222
+5	53005	EU-005 Scorpio	35.241.30.185	5222	2	0	35.241.30.185	5222
+6	53006	EU-006 Orion	35.186.208.230	5222	2	0	35.186.208.230	5222
+7	53007	EU-007 Legend	35.244.155.21	5222	2	0	35.244.155.21	5222
+8	53008	EU-008 Mantra	35.244.210.241	5222	2	0	35.244.210.241	5222
+9	53009	EU-009 Lyra	34.98.107.82	5222	2	0	34.98.107.82	5222
+10	53010	EU-010 Aquila	35.244.210.242	5222	2	0	35.244.210.242	5222
+-EU[11~20]
+11	53011	EU-011 Aries	35.190.125.19	5222	2	0	35.190.125.19	5222
+12	53012	EU-012 Squall	34.95.105.235	5222	1	1	34.95.105.235	5222
+-US[1~10]
+1	53101	US-001 Archosaur	34.98.104.11	5222	2	0	34.98.104.11	5222
+2	53102	US-002 Blade	35.201.80.83	5222	2	0	35.201.80.83	5222
+3	53103	US-003 Ares	34.96.115.226	5222	2	0	34.96.115.226	5222
+4	53104	US-004 Tycoon	34.98.112.117	5222	2	0	34.98.112.117	5222
+5	53105	US-005 Surge	35.190.20.104	5222	2	0	35.190.20.104	5222
+6	53106	US-006 Vigor	35.190.127.203	5222	2	0	35.190.127.203	5222
+7	53107	US-007 Zenith	35.241.17.131	5222	2	0	35.241.17.131	5222
+8	53108	US-008 Realm	35.244.244.3	5222	2	0	35.244.244.3	5222
+9	53109	US-009 Carina	echo.websocket.org	443	2	0	echo.websocket.org	443
+10	53110	US-010 Cepheus	34.98.116.149	5222	2	0	34.98.116.149	5222
+-US[11~20]
+11	53111	US-011 Columba	35.190.70.51	5222	2	0	35.190.70.51	5222
+12	53112	US-012 Corvus	35.227.230.246	5222	1	1	35.227.230.246	5222
+-OC[1~10]
+1	53201	OC-001 Nebula	34.98.72.208	5222	1	1	34.98.72.208	5222
+[testlist]
+#测试服务器区域，配齐11列的才会参与判断
+#IsShowOther配置n时，只显示测试区的服务器，不显示正常区域服务器
+#channel配置单独渠道时，只有该渠道受影响如果配置a则所有渠道都收影响 
+#gameVersion ProgramVersion buildVersion 必须与客户端完全一致，才会显示
+#serverid worldid serverName ip port stateIcon stateIcon2 tgwAddress tgwPort channel IsShowOther GameVersion ProgramVersion BuildVersion
+-提审服
+9001	9001	提审服	93.251.7.164	3341	1	0	13.251.6.163	3341	y	y	1	221	1
+101	1002	提审服3	123.59.38.45	3361	1	0	123.59.38.45	3361
+102	1003	提审服4	123.59.38.45	3371	1	0	123.59.38.45	3371
+
+[forceupdate]
+#强制更新配置当GameVersion ProgramVersion匹配时，如果BuildVersion大于客户端自带的，则触发强制更新逻辑
+#channel GameVersion ProgramVersion BuildVersion
+TY	0	1	0
+
+[rechargeIgnore]
+#充值屏蔽配置 渠道名+屏蔽物品ID tab分隔
+#channel GameVersion ProgramVersion BuildVersion productlist
+Test	0	1	0	1000
+
+[otherconfig]
+CrashLogUrl	http://124.243.242.17/Crash/src/collectClientCrash.php
+ErrorLogUrl	http://124.243.242.17/Crash/src/collectClientCrash.php
+OpenQRFunc	1
+OpenBugly	0
+
+[openlanguage]
+1
+
+[defaultlanguage]
+#languagetype	dicid
+EN	167102
+
+[languageconfig]
+#languagetype	dicid
+CN	167101
