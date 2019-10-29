@@ -1,24 +1,14 @@
 {
-  "name": "ws-2019",
+  "name": "socket.io-chat-example",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "A simple chat client example using socket.io",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rossanmol/ws-2019.git"
+    "url": "git://github.com/evennode/socket.io-chat"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rossanmol/ws-2019/issues"
-  },
-  "homepage": "https://github.com/rossanmol/ws-2019#readme",
+  "main": "app.js",
   "dependencies": {
-    "express": "^4.17.1",
-    "nodejs-websocket": "^1.7.2",
-    "socket.io": "^2.3.0"
+    "express": "3.4.8",
+    "socket.io": "^1.1.0"
   }
 }
