@@ -24,15 +24,11 @@ const wss = new WebSocket.Server({
 });
 
 wss.on('connection', function connection(ws) {
-  ws.on('message', function incoming(message) {
-    console.log('received: %s', message);
-
+  ws.on('message', function incoming(data) {
     wss.clients.forEach(function each(client) {
-      if (client.readyState === WebSocket.OPEN) {
-        client.send("received", message.toUpperCase());
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(`received ${data}`);
       }
     });
   });
-
-  ws.send('something v2');
 });
