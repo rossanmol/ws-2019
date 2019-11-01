@@ -1,11 +1,13 @@
-var Socket = require('simple-websocket')
+var ws = require("nodejs-websocket")
 
-var socket = new Socket('wss://echo.websocket.org')
-socket.on('connect', function () {
-  // socket is connected!
-  socket.send('sup!')
-})
-
-socket.on('data', function (data) {
-  console.log('got message: ' + data)
-})
+// Scream server example: "hi" -> "HI!!!"
+var server = ws.createServer(function (conn) {
+  console.log("New connection")
+  conn.on("text", function (str) {
+    console.log("Received " + str)
+    conn.sendText(str.toUpperCase() + "!!!")
+  })
+  conn.on("close", function (code, reason) {
+    console.log("Connection closed")
+  })
+}).listen(process.env.PORT || 3000)
