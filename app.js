@@ -1,7 +1,7 @@
 const WebSocket = require('ws');
 
 const wss = new WebSocket.Server({
-  port: 5222,
+  port: process.env.PORT || 3000,
   perMessageDeflate: {
     zlibDeflateOptions: {
       // See zlib defaults.
