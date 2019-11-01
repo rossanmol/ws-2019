@@ -23,10 +23,11 @@ const wss = new WebSocket.Server({
   }
 });
 
-wss.on('open', function open() {
-  ws.send('something');
-});
+wss.on('connection', function connection(ws) {
+  ws.on('message', function incoming(message) {
+    console.log('received: %s', message);
+    ws.send('wow, i received', message);
+  });
 
-wss.on('message', function incoming(data) {
-  console.log(data);
+  ws.send('something');
 });
