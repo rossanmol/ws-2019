@@ -24,7 +24,10 @@ const wss = new WebSocket.Server({
 });
 
 wss.on('connection', function connection(ws) {
+  ws.send("connect");
+  console.log("connect");
   ws.on('message', function incoming(data) {
+    console.log("received", data);
     wss.clients.forEach(function each(client) {
       if (client !== ws && client.readyState === WebSocket.OPEN) {
         client.send(`received ${data}`);
