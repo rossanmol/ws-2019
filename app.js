@@ -1,37 +1,25 @@
-const WebSocket = require('ws');
+var net = require('net');
 
-const wss = new WebSocket.Server({
-  port: process.env.PORT || 3000,
-  perMessageDeflate: {
-    zlibDeflateOptions: {
-      // See zlib defaults.
-      chunkSize: 1024,
-      memLevel: 7,
-      level: 3
-    },
-    zlibInflateOptions: {
-      chunkSize: 10 * 1024
-    },
-    // Other options settable:
-    clientNoContextTakeover: true, // Defaults to negotiated value.
-    serverNoContextTakeover: true, // Defaults to negotiated value.
-    serverMaxWindowBits: 10, // Defaults to negotiated value.
-    // Below options specified as default values.
-    concurrencyLimit: 10, // Limits zlib concurrency for perf.
-    threshold: 1024 // Size (in bytes) below which messages
-    // should not be compressed.
-  }
-});
+var HOST = '127.0.0.1';
+var PORT = process.env.PORT | 5222;
 
-wss.on('connection', function connection(ws) {
-  ws.send("connect");
-  console.log("connect");
-  ws.on('message', function incoming(data) {
-    console.log("received", data);
-    wss.clients.forEach(function each(client) {
-      if (client !== ws && client.readyState === WebSocket.OPEN) {
-        client.send(`received ${data}`);
-      }
-    });
+// Create a server instance, and chain the listen function to it
+// The function passed to net.createServer() becomes the event handler for the 'connection' event
+// The sock object the callback function receives UNIQUE for each connection
+net.createServer(function (sock) {
+  // We have a connection - a socket object is assigned to the connection automatically
+  console.log('CONNECTED: ' + sock.remoteAddress + ':' + sock.remotePort);
+  // Add a 'data' event handler to this instance of socket
+  sock.on('data', function (data) {
+    console.log('DATA ' + sock.remoteAddress + ': ' + data);
+    // Write the data back to the socket, the client will receive it as data from the server
+    sock.write('You said "' + data + '"');
   });
-});
+  // Add a 'close' event handler to this instance of socket
+  sock.on('close', function (data) {
+    console.log('CLOSED: ' + sock.remoteAddress + ' ' + sock.remotePort);
+  });
+
+}).listen(PORT, HOST);
+
+console.log('Server listening on ' + HOST + ':' + PORT);
